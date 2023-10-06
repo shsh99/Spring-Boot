@@ -25,6 +25,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/exam06")
 public class MultiPathVariableController {
+    //  TODO: 예제 : id, name 2개 매개변수 전달해서 jsp 출력
+//    URL 테스트 : http://localhost:8000/exam06/multi-path/id/ehdzl5464/name/Song
     @GetMapping("/multi-path/id/{id}/name/{name}")
     public String getMultiVar(
             @PathVariable String id,
@@ -33,14 +35,15 @@ public class MultiPathVariableController {
     ) {
         model.addAttribute("id", id);
         model.addAttribute("name", name);
+
         return "exam06/multi_path.jsp";
     }
 
-    // TODO: 아래 url 를 보고 함수를 작성하세요
-//   jsp 에 전달시 list 배열에 담아 부트스트랩 테이블로 출력하세요
-//   url : /example01/dno/{dno}/dName/{dName}/loc/{loc}
-//   jsp : exam06/example01.jsp
-//   URL 테스트:  http://localhost:8000/exam06/example01/dno/10/dname/Sales/loc/Pusan
+    //  TODO: 아래 url 를 보고 함수를 작성하세요
+//    jsp 에 전달시 list 배열에 담아 부트스트랩 테이블로 출력하세요
+//    url : /example01/dno/{dno}/dname/{dname}/loc/{loc}
+//    jsp : exam06/example01.jsp
+//    URL 테스트:  http://localhost:8000/exam06/example01/dno/10/dname/Sales/loc/Pusan
     @GetMapping("/example01/dno/{dno}/dname/{dname}/loc/{loc}")
     public String getExample01(
             @PathVariable int dno,
@@ -54,6 +57,14 @@ public class MultiPathVariableController {
         list.add(loc);
 
         model.addAttribute("list", list);
+
         return "exam06/example01.jsp";
     }
+
+    //  TODO: 예제 2
+    @GetMapping("/etc")
+    public String getEtc(Model model) {
+        return "exam06/etc.jsp";
+    }
+
 }
